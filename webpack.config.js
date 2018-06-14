@@ -1,12 +1,12 @@
 const webpack = require('webpack')
-const path = require('path')
+const { resolve } = require('path')
 
 // Plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
-const WebpackChunkHash = require('webpack-chunk-hash')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -14,9 +14,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const devMode = process.env.NODE_ENV !== 'production'
 
 const sassOptions = {
-    includePaths: [
-        path.resolve(__dirname, 'node_modules')
-    ]
+    includePaths: [resolve(__dirname, 'node_modules')]
 }
 
 module.exports = {
@@ -29,17 +27,23 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: resolve(__dirname, 'build'),
         publicPath: '/',
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].js'
+        filename: '[name].[hash].js',
+        chunkFilename: '[name].[hash].js'
     },
     resolve: {
         extensions: ['.js', '.json', '.vue'],
-        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+        modules: [resolve(__dirname, 'src'), 'node_modules'],
         alias: {
-            '~': path.resolve(__dirname, 'src')
+            '~': resolve(__dirname, 'src'),
+            'modules': resolve(__dirname, 'modules')
         }
+    },
+    serve: {
+        host: '0.0.0.0',
+        content: resolve(__dirname, 'build'),
+        clipboard: false
     },
     module: {
         rules: [
@@ -72,19 +76,20 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
-            title: 'Damax Admin'
+            title: 'Damax Admin',
+            alwaysWriteToDisk: true
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css',
             append: false,
             publicPath: ''
         }),
+        new HtmlWebpackHarddiskPlugin(),
         new CleanWebpackPlugin('build'),
         new MiniCssExtractPlugin({
-            filename: '[name].[chunkhash].css',
-            chunkFilename: '[name].[chunkhash].css'
+            filename: '[name].[hash].css',
+            chunkFilename: '[name].[hash].css'
         }),
-        new WebpackChunkHash({ algorithm: 'md5' }),
         new VueLoaderPlugin(),
         new webpack.EnvironmentPlugin(require('dotenv').config().parsed)
     ],

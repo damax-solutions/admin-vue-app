@@ -20,7 +20,7 @@ const generateRoutesFromMenu = (items, routes = []) => {
 }
 
 const collect = (routes, module) => {
-    const menu = require('../modules/' + module + '/router')
+    const menu = require('modules/' + module + '/router')
 
     return routes.concat(menu.default)
 }

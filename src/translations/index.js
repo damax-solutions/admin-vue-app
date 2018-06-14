@@ -15,7 +15,7 @@ const collect = (catalogue, locale) => {
     // Module translations.
     modules.forEach(module => {
         try {
-            const data = require('../modules/' + module + '/translations/' + locale)
+            const data = require('modules/' + module + '/translations/' + locale)
 
             catalogue[locale] = merge(catalogue[locale], data)
         } catch (e) {

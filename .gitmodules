@@ -1,0 +1,6 @@
+[submodule "modules/user"]
+	path = modules/user
+	url = git@bitbucket.org:damaxsolutions/admin-vue-bulma-user.git
+[submodule "modules/contact"]
+	path = modules/contact
+	url = git@bitbucket.org:damaxsolutions/admin-vue-bulma-contact.git
