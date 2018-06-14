@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -40,11 +39,6 @@ module.exports = {
             'modules': resolve(__dirname, 'modules')
         }
     },
-    serve: {
-        host: '0.0.0.0',
-        content: resolve(__dirname, 'build'),
-        clipboard: false
-    },
     module: {
         rules: [
 
@@ -76,15 +70,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
-            title: 'Damax Admin',
-            alwaysWriteToDisk: true
+            title: 'Damax Admin'
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css',
             append: false,
             publicPath: ''
         }),
-        new HtmlWebpackHarddiskPlugin(),
         new CleanWebpackPlugin('build'),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
