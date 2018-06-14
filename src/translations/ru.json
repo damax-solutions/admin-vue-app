@@ -1,0 +1,28 @@
+{
+  "error": {
+    "header": {
+      "application": "Ошибка приложения",
+      "page_not_found": "Страница не найдена",
+      "access_denied": "Доступ закрыт"
+    },
+    "message": {
+      "application": "Произошла непредвиденная ошибка.\nМы проносим извенения за предоставленные неудобства.\nПожалуйста, попробуйте позже.",
+      "page_not_found": "Запрошенный ресурс не найден.",
+      "access_denied": "У Вас нет прав доступа к данному разделу."
+    }
+  },
+  "nav": {
+    "dashboard": "Панель"
+  },
+  "pager": {
+    "displaying_results": "Показано {offsetStart} - {offsetEnd} из {total}.",
+    "previous": "Предыдущая",
+    "next": "Следующая"
+  },
+  "button": {
+    "cancel": "Отменить"
+  },
+  "dialog": {
+    "error": "Ошибка"
+  }
+}

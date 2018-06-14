@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+@import "bulma/bulma";
+
+@import "buefy/src/scss/buefy";
+
+.app-main {
+  padding: 20px;
+}
+.app-content {
+  font-size: 0.875rem;
+}
+
+.animated {
+  animation-duration: .4s;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  display: block;
+  width: 100%;
+  min-height: .01%;
+}
+
+.nprogress-container {
+  z-index: 2048;
+  position: fixed !important;
+  width: 100%;
+  height: 50px;
+  pointer-events: none;
+
+  #nprogress {
+    $color: hsl(204, 86%, 53%);
+
+    .bar {
+      background-color: $color;
+    }
+    .peg {
+      box-shadow: 0 0 10px $color, 0 0 5px $color;
+    }
+    .spinner-icon {
+      display: none;
+    }
+  }
+}

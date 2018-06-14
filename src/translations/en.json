@@ -1,0 +1,28 @@
+{
+  "error": {
+    "header": {
+      "application": "Application error",
+      "page_not_found": "Page not found",
+      "access_denied": "Access denied"
+    },
+    "message": {
+      "application": "An unexpected error has been detected.\nWe apologise for the inconvenience this may cause.\nPlease try again later.",
+      "page_not_found": "The requested resource could not be found.",
+      "access_denied": "You do not have the necessary permissions to access the requested content."
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard"
+  },
+  "pager": {
+    "displaying_results": "Displaying {offsetStart} - {offsetEnd} of {total} results.",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "button": {
+    "cancel": "Cancel"
+  },
+  "dialog": {
+    "error": "Error"
+  }
+}

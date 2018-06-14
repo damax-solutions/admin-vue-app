@@ -1,0 +1,9 @@
+{
+  "presets": ["env"],
+  "plugins": [
+    "syntax-async-functions",
+    "syntax-dynamic-import",
+    "transform-export-extensions",
+    "transform-object-rest-spread"
+  ]
+}
