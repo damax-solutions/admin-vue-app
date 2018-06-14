@@ -1,4 +1,5 @@
 const os = require('os')
+const fs = require('fs')
 const { resolve } = require('path')
 
 const history = require('connect-history-api-fallback')
@@ -16,7 +17,16 @@ module.exports = {
     content: resolve(__dirname, 'build'),
 
     hot: {
-        host: { server: host, client: 'localhost' }
+        host: {
+            https: true,
+            server: host,
+            client: 'localhost'
+        }
+    },
+
+    https: {
+        key: fs.readFileSync(resolve(__dirname, 'certs/admin.docker.key')),
+        cert: fs.readFileSync(resolve(__dirname, 'certs/admin.docker.crt'))
     },
 
     add (app, middleware, options) {
