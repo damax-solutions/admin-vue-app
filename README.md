@@ -2,4 +2,4 @@
 
 ## Demo
 
-![Gallery](https://raw.githubusercontent.com/lakiboy/damax-admin-vue-bulma/master/doc/demo-01.png)
+![Gallery](https://raw.githubusercontent.com/lakiboy/damax-admin-vue-bulma/master/doc/demo-02.png)
