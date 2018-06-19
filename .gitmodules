@@ -1,0 +1,3 @@
+[submodule "modules/user"]
+	path = modules/user
+	url = git@github.com:lakiboy/damax-admin-vue-bulma-user.git
