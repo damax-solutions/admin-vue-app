@@ -33,6 +33,22 @@ const extractMessages = function (violations) {
     return messages
 }
 
+const handler = async function (cb) {
+    try {
+        const { data } = await cb
+
+        return data
+    } catch ({ response }) {
+        const { headers, data, status } = response
+
+        if (headers['content-type'] === 'application/problem+json') {
+            throw new ProblemDetails(data, status)
+        }
+
+        throw new RequestError(data.message, status)
+    }
+}
+
 export class RequestError extends ExtendableError {
     constructor (message, status = 400) {
         super(message)
@@ -51,20 +67,14 @@ export class ProblemDetails extends RequestError {
     }
 }
 
-export const handler = async function (cb) {
-    try {
-        const { data } = await cb
+export const fetchData = (target, property, descriptor) => {
+    const method = descriptor.value
 
-        return data
-    } catch ({ response }) {
-        const { headers, data, status } = response
-
-        if (headers['content-type'] === 'application/problem+json') {
-            throw new ProblemDetails(data, status)
-        }
-
-        throw new RequestError(data.message, status)
+    descriptor.value = function (...args) {
+        return handler(method.call(this, ...args))
     }
+
+    return descriptor
 }
 
 export default axios.create({

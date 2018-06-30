@@ -3,6 +3,7 @@
   "plugins": [
     "syntax-async-functions",
     "syntax-dynamic-import",
+    "transform-decorators-legacy",
     "transform-export-extensions",
     "transform-object-rest-spread"
   ]
