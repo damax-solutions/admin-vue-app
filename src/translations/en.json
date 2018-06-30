@@ -20,7 +20,8 @@
     "next": "Next"
   },
   "button": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "save": "Save"
   },
   "dialog": {
     "error": "Error"
